@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1 align='center'>Employee Update Form</h1>
+    <%= form_for :employee,url: {action: 'employee_update'},method: :post do |f| %>
+    <table align='center' border = '1'>
+      <tr>
+        <td>Name</td>
+        <td><%= @emp[:emp_name]%><br /></td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td><%= f.text_field :email_id, value: @emp[:email_id] %><br /></td>
+      </tr>
+      <tr>
+          <td>Mobile</td>
+          <td><%= f.text_field :mobile_no, value: @emp[:mobile_no] %><br /></td>
+      </tr>
+      <tr>
+        <td>Salary</td>
+        <td><%= f.text_field :salary, value: @emp[:salary] %><br /></td>
+      </tr>
+      <tr>
+          <td>Address</td>
+          <td><%= f.text_field :address, value: @emp[:address] %><br /></td>
+      </tr>
+      <tr>
+        <td><%= f.submit("UPDATE") %></td>
+      </tr>
+    </table>
+      <%= f.hidden_field :id,value: @emp[:id] %>
+      <%= f.hidden_field :emp_name, value: @emp[:emp_name] %>
+    <% end %>
+  </body>
+</html>

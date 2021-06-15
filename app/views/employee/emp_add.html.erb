@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%= render partial: "employee/header" %>
+    <h1 align='center'>Employee Add </h1>
+  <%= form_for :employee,url: {action: 'employee_add'}, method: :get do |f| %>
+  <table align='center' border = '1'>
+    <tr>
+      <td>Name</td>
+      <td><%= f.text_field :emp_name %><br /></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><%= f.text_field :email_id %><br /></td>
+    </tr>
+    <tr>
+        <td>Mobile</td>
+        <td><%= f.text_field :mobile_no %><br /></td>
+    </tr>
+    <tr>
+      <td>Salary</td>
+      <td><%= f.text_field :salary %><br /></td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td><%= f.text_field :address %><br /></td>
+    </tr>
+    <tr>
+      <td><%= f.submit %></td>
+    </tr>
+  </table>
+  <% end %>
+  </body>
+</html>

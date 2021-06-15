@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1 align='center'>Emplooye Search Form</h1>
+    <%= form_for :employee,url:{action: 'employee_search' }, method: :get do |f| %>
+    <table align='center' border="0.5">
+    <tr>
+      <td>Employee Name</td>
+      <td><%= f.text_field :emp_name %></td>
+    </tr>
+    <tr colspan='2'>
+      <td><%= f.submit("Search") %></td>
+    </tr>
+    </table>
+    <% end %>
+  </body>
+</html>
