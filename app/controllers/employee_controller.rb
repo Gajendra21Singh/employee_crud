@@ -35,17 +35,21 @@ class EmployeeController < ApplicationController
       address:permitted[:address],salary:permitted[:salary]).valid?
       if emp == true
         puts "Employee Save Successfully"
+        @msg = "Employee Save Successfully"
       else
         puts "validation error"
+        @msg = "validation error"
       end
     end
+
+    render partial: "employee/message"
   end
 
   def employee_search
     puts "Params = #{params}"
-    name = params.require(:employee).permit(:name)
-    #puts "Name = #{name}"
-    @employee = Employee.where(emp_name: name[:name]);
+    name = params.require(:employee).permit(:emp_name)
+    puts "Name = #{name}"
+    @employee = Employee.where(emp_name: name[:emp_name]);
     puts "NAME = #{@employee}"
     puts "emp = #{@employee}"
     puts "emp size = #{@employee.size}"
@@ -66,7 +70,10 @@ class EmployeeController < ApplicationController
     puts "DELETE = #{params}"
     id = params.require(:id)
     puts "ID = #{id}"
-    Employee.destroy_by(id: id)
+    status = Employee.destroy_by(id: id)
+    @msg = "Employee are Deleted Successfully"
+    render partial: "employee/message"
+
   end
 
   def employee_update
@@ -82,9 +89,12 @@ class EmployeeController < ApplicationController
     emp[:mobile_no] = permitted[:mobile_no]
     if emp.save
       puts "Employee Update Successfully"
+      @msg = "Employee Update Successfully"
     else
       puts "not update"
+      @msg = "Employee updating failure"
     end
+    render partial: "employee/message"
 
   end
   def emp_add
