@@ -2,10 +2,27 @@ class EmployeeController < ApplicationController
 #  layout: "test"
 
   def emp_home
-    @employee = Employee.all
+    puts "Params Value = #{params}"
+    emp_name = params[:emp_name]
+    puts "Employee NAME = #{emp_name}"
+    puts "Value = #{emp_name.nil?}"
+    @employee = nil
+    if emp_name.nil?
+      @employees = Employee.all
+    else
+      @employees = Employee.where(emp_name: emp_name)
+    end
+    @employee = @employees.first
     puts "Employee Params= #{@employee}"
   end
 
+  def emp_search
+    puts "Emp_Search = #{params}"
+    emp = params.require(:employee)
+    puts "Emp Search = #{emp}"
+    emp_name = emp[:name]
+    redirect_to action: 'emp_home',emp_name: emp_name
+  end
   def employee_add
     puts "============================="
     puts "Params = #{params}"
@@ -25,10 +42,10 @@ class EmployeeController < ApplicationController
   end
 
   def employee_search
-    #puts "Params = #{params}"
-    name = params.require(:employee).permit(:emp_name)
+    puts "Params = #{params}"
+    name = params.require(:employee).permit(:name)
     #puts "Name = #{name}"
-    @employee = Employee.where(emp_name: name[:emp_name]);
+    @employee = Employee.where(emp_name: name[:name]);
     puts "NAME = #{@employee}"
     puts "emp = #{@employee}"
     puts "emp size = #{@employee.size}"

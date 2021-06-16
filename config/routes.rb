@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get 'employee/delete_page'
   get 'employee/employee_delete'
   get 'employee/employee_update'
+  #post 'employee/emp_search'
+  match 'employee/emp_search', via: [:patch, :post]
 end

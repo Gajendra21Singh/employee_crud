@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-  </head>
+    </head>
   <body>
     <!-- <%= render partial: "employee/header" %> -->
     <h1 align='center'>Employee Add </h1>
-  <%= form_for :employee,url: {action: 'employee_add'}, method: :get do |f| %>
+  <%= form_for :employee,url: {action: 'employee_add'},html: {method: 'get',name: 'form',onsubmit: 'return checkform()'}  do |f| %>
   <table align='center' border = '1'>
     <tr>
       <td>Name</td>
@@ -30,9 +30,45 @@
         <td><%= f.text_field :address %><br /></td>
     </tr>
     <tr>
-      <td><%= f.submit %></td>
+      <td><%= f.submit("Create") %></td>
     </tr>
   </table>
   <% end %>
   </body>
+  <script>
+    function checkform() {
+      var name = document.forms["form"]["employee_emp_name"].value;
+      var email = document.forms["form"]["employee_email_id"].value;
+      var mobile = document.forms["form"]["employee_mobile_no"].value;
+      var salary = document.forms["form"]["employee_salary"].value;
+      var address = document.forms["form"]["employee_address"].value;
+      console.log("@@@@@@@@@@@@@@@@@2")
+      if (name ==""){
+        alert("Please enter your name.")
+        return false;
+      }
+      if (email == "")
+      {
+        alert("Please enter your email.")
+        return false;
+        }
+      if (mobile == "")
+      {
+        alert("Please enter your mobile.")
+        return false;
+        }
+      if (salary == "")
+      {
+        alert("Please enter your salary.")
+        return false;
+       }
+     if (address == "")
+    {
+      alert("Please enter your address.")
+      return false;
+       }
+       return true;
+
+  }
+  </script>
 </html>
