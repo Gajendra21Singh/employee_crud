@@ -1,7 +1,9 @@
 class EmployeeController < ApplicationController
 #  layout: "test"
-  def emp_home
 
+  def emp_home
+    @employee = Employee.all
+  #  puts "employee = #{@employee}"
   end
 
   def employee_add

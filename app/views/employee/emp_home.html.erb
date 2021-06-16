@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1 align='center'>Employe Home Page</h1>
-    <br><br>
-    <table align='center' border="1">
-      <tr>
-        <td><h2><a href="/employee/emp_add">Add New Employee</a></h2></td>
-        <td><h2><a href="http://localhost:2107/employee/edit_page">Edit Employee</a></h2></td>
-        <td><h2><a href="http://localhost:2107/employee/search">Search Employee</a></h2></td>
-        <td><h2><a href="http://localhost:2107/employee/delete_page">Delete Employee</a></h2></td>
-      </tr>
-    </table>
-  </body>
-</html>
+<h1 align='center'>Employee Records</h1>
+<table align='center' , border = '1'>
+  <tr>
+    <td>Name</td>
+    <td>Email Id</td>
+    <td>Mobile No</td>
+    <td>Salary</td>
+    <td>Address</td>
+  </tr>
+  <%= @employee.each do |emp| %>
+  <tr>
+    <td><%= emp[:emp_name] %></td>
+    <td><%= emp[:email_id] %></td>
+    <td><%= emp[:mobile_no] %></td>
+    <td><%= emp[:salary] %></td>
+    <td><%= emp[:address] %></td>
+    <td><%= %></td>
+    <td><%= %></td>
+    <td><%= %></td>
+  </tr>
+  <% end %>
+</table>
