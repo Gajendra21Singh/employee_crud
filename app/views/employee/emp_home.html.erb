@@ -1,4 +1,5 @@
-<h1 align='center'>Employee Records</h1>
+<%= render "search" %>
+<h1 align='center'>Employees List</h1>
 <table align='center' , border = '1'>
   <tr>
     <td>Name</td>
@@ -6,17 +7,17 @@
     <td>Mobile No</td>
     <td>Salary</td>
     <td>Address</td>
+    <td colspan="2">Action</td>
   </tr>
-  <%= @employee.each do |emp| %>
+  <% @employee.each do |emp| %>
   <tr>
     <td><%= emp[:emp_name] %></td>
     <td><%= emp[:email_id] %></td>
     <td><%= emp[:mobile_no] %></td>
     <td><%= emp[:salary] %></td>
     <td><%= emp[:address] %></td>
-    <td><%= %></td>
-    <td><%= %></td>
-    <td><%= %></td>
+    <td><%= link_to "Edit",controller: "employee",action: "employee_edit",id: emp[:id]%></td>
+    <td><%= link_to "Delete",controller: "employee",action: "employee_delete",id: emp[:id]%></td>
   </tr>
   <% end %>
 </table>

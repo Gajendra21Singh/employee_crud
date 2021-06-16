@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post 'employee/employee_update'
   get 'employee/delete_page'
   get 'employee/employee_delete'
+  get 'employee/employee_update'
 end

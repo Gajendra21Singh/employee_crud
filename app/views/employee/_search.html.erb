@@ -1,0 +1,12 @@
+<h1 align='center'>Emplooye Search</h1>
+<%= form_for :employee,url:{action: 'employee_search' }, method: :post do |f| %>
+<table align='center' border="0.5">
+<tr>
+  <td>Employee Name</td>
+  <td><%= f.text_field :emp_name %></td>
+</tr>
+<tr colspan='2'>
+  <td><%= f.submit("Search") %></td>
+</tr>
+</table>
+<% end %>

@@ -3,7 +3,7 @@ class EmployeeController < ApplicationController
 
   def emp_home
     @employee = Employee.all
-  #  puts "employee = #{@employee}"
+    puts "Employee Params= #{@employee}"
   end
 
   def employee_add
@@ -28,41 +28,37 @@ class EmployeeController < ApplicationController
     #puts "Params = #{params}"
     name = params.require(:employee).permit(:emp_name)
     #puts "Name = #{name}"
-    @emp = Employee.where(emp_name: name[:emp_name]);
-  #  puts "NAME = #{@emp}"
-    puts "emp = #{@emp}"
-    puts "emp size = #{@emp.size}"
+    @employee = Employee.where(emp_name: name[:emp_name]);
+    puts "NAME = #{@employee}"
+    puts "emp = #{@employee}"
+    puts "emp size = #{@employee.size}"
     puts "=================="
-    @emp.each do |e|
+    @employee.each do |e|
       puts "Name = #{e[:emp_name]}"
       puts "Mobile = #{e[:mobile_no]}"
     end
     puts "===================="
-    redirect_to action: 'search'
   end
 
   def employee_edit
-    email = params.require(:employee).permit(:email_id)
-    puts "email = #{email}"
-    @emp = Employee.find_by(email_id: email[:email_id]);
-    puts "Edit emp = #{@emp}"
-    print "Name "
-    puts @emp[:emp_name]
+    id = params.require(:id)
+    @emp = Employee.find_by(id: id);
   end
 
   def employee_delete
     puts "DELETE = #{params}"
-    email = params.require(:employee).permit(:email_id)
-    Employee.destroy_by(email_id: email[:email_id])
+    id = params.require(:id)
+    puts "ID = #{id}"
+    Employee.destroy_by(id: id)
   end
 
   def employee_update
     puts "Employee Update"
     puts "params = #{params}"
     permitted = params.require(:employee).permit(:id,:emp_name,:email_id,:mobile_no,:address,:salary)
-    emp_id = permitted[:id]
+    id = permitted[:id]
     #puts "emp_id = #{emp_id}"
-    emp = Employee.find_by(id: emp_id);
+    emp = Employee.find_by(id: id);
     emp[:email_id] = permitted[:email_id]
     emp[:address] = permitted[:address]
     emp[:salary] = permitted[:salary]

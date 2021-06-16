@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <h1 align='center'>Employee Details</h1>
+      <table align='center' , border = '1'>
+        <tr>
+          <td>Name</td>
+          <td>Email Id</td>
+          <td>Mobile No</td>
+          <td>Salary</td>
+          <td>Address</td>
+          <td colspan="2">Action</td>
+        </tr>
+        <% @employee.each do |emp| %>
+        <tr>
+          <td><%= emp[:emp_name] %></td>
+          <td><%= emp[:email_id] %></td>
+          <td><%= emp[:mobile_no] %></td>
+          <td><%= emp[:salary] %></td>
+          <td><%= emp[:address] %></td>
+          <td><%= link_to "Edit",controller: "employee",action: "employee_edit",id: emp[:id]%></td>
+          <td><%= link_to "Delete",controller: "employee",action: "employee_delete",id: emp[:id]%></td>
+        </tr>
+        <% end %>
+      </table>
+  </body>
+</html>
